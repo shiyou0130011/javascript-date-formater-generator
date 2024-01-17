@@ -24,8 +24,8 @@
 					if(extra){
 						lang += `-u${extra}`
 					}
-
-					document.querySelector("output").innerText = new Intl.DateTimeFormat(lang).format(this.querySelector("[name=date]").valueAsDate)
+					
+					document.querySelector("#output").innerText = new Intl.DateTimeFormat(lang).format(this.querySelector("[name=date]").valueAsDate || new Date)
 
 				})
 			})
