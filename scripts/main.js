@@ -19,7 +19,13 @@ window.addEventListener("load", function(){
 			lang += `-u${extra}`
 		}
 		
-		document.querySelector("#output").innerText = new Intl.DateTimeFormat(lang).format(d)
+		document.querySelector("#output").innerText = new Intl.DateTimeFormat(
+			lang, 
+			{
+				dateStyle: 'full', 
+				timeStyle: 'full'
+			}
+		).format(d)
 	})
 
 	document.querySelector("form#js-date-format-form").dispatchEvent(new CustomEvent("change"))
