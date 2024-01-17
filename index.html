@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<title>JS Date Formater</title>
+		<style>
+			#outer{
+				display: flex;
+			}
+		</style>
+		<script>
+			window.addEventListener("load", function(){
+				document.querySelector("form#js-date-format-form [name=date]").value = (new Date).toISOString()
+				document.querySelector("form#js-date-format-form").addEventListener("change", function(e){
+					let lang = this.querySelector("[name=lang]").value || "zh-Hant-TW"
+					let extra = ""
+					if(this.querySelector("#nu").value){
+						extra += `-nu-${this.querySelector("#nu").value}`
+					}
+
+					if(this.querySelector("#ca").value){
+						extra += `-ca-${this.querySelector("#ca").value}`
+					}
+					if(extra){
+						lang += `-u${extra}`
+					}
+
+					document.querySelector("output").innerText = new Intl.DateTimeFormat(lang).format(this.querySelector("[name=date]").valueAsDate)
+
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="outer">
+			<aside>
+				<form action="#" id="js-date-format-form">
+					<input type="date" name="date" required />
+
+					<br />
+
+					<input type="text" name="lang" value="zh-Hant-TW" />
+					<span>-u-nu-</span>
+					<select id="nu">
+						<option value=""></option>
+						<option value="adlm">adlm</option> 
+						<option value="ahom">ahom</option> 
+						<option value="arab">arab</option> 
+						<option value="arabext">arabext</option> 
+						<option value="armn">armn</option> 
+						<option value="armnlow">armnlow</option> 
+						<option value="bali">bali</option> 
+						<option value="beng">beng</option> 
+						<option value="bhks">bhks</option> 
+						<option value="brah">brah</option> 
+						<option value="cakm">cakm</option> 
+						<option value="cham">cham</option> 
+						<option value="cyrl">cyrl</option> 
+						<option value="deva">deva</option> 
+						<option value="ethi">ethi</option> 
+						<option value="finance">finance</option> 
+						<option value="fullwide">fullwide</option> 
+						<option value="geor">geor</option> 
+						<option value="gong">gong</option> 
+						<option value="gonm">gonm</option> 
+						<option value="grek">grek</option> 
+						<option value="greklow">greklow</option> 
+						<option value="gujr">gujr</option> 
+						<option value="guru">guru</option> 
+						<option value="hanidays">hanidays</option> 
+						<option value="hanidec">hanidec</option> 
+						<option value="hans">hans</option> 
+						<option value="hansfin">hansfin</option> 
+						<option value="hant">hant</option> 
+						<option value="hantfin">hantfin</option> 
+						<option value="hebr">hebr</option> 
+						<option value="hmng">hmng</option> 
+						<option value="hmnp">hmnp</option> 
+						<option value="java">java</option> 
+						<option value="jpan">jpan</option> 
+						<option value="jpanfin">jpanfin</option> 
+						<option value="jpanyear">jpanyear</option> 
+						<option value="kali">kali</option> 
+						<option value="khmr">khmr</option> 
+						<option value="knda">knda</option> 
+						<option value="lana">lana</option> 
+						<option value="lanatham">lanatham</option> 
+						<option value="laoo">laoo</option> 
+						<option value="latn">latn</option> 
+						<option value="lepc">lepc</option> 
+						<option value="limb">limb</option> 
+						<option value="mathbold">mathbold</option> 
+						<option value="mathdbl">mathdbl</option> 
+						<option value="mathmono">mathmono</option> 
+						<option value="mathsanb">mathsanb</option> 
+						<option value="mathsans">mathsans</option> 
+						<option value="mlym">mlym</option> 
+						<option value="modi">modi</option> 
+						<option value="mong">mong</option> 
+						<option value="mroo">mroo</option> 
+						<option value="mtei">mtei</option> 
+						<option value="mymr">mymr</option> 
+						<option value="mymrshan">mymrshan</option> 
+						<option value="mymrtlng">mymrtlng</option> 
+						<option value="native">native</option> 
+						<option value="newa">newa</option> 
+						<option value="nkoo">nkoo</option> 
+						<option value="olck">olck</option> 
+						<option value="orya">orya</option> 
+						<option value="osma">osma</option> 
+						<option value="rohg">rohg</option> 
+						<option value="roman">roman</option> 
+						<option value="romanlow">romanlow</option> 
+						<option value="saur">saur</option> 
+						<option value="shrd">shrd</option> 
+						<option value="sind">sind</option> 
+						<option value="sinh">sinh</option> 
+						<option value="sora">sora</option> 
+						<option value="sund">sund</option> 
+						<option value="takr">takr</option> 
+						<option value="talu">talu</option> 
+						<option value="taml">taml</option> 
+						<option value="tamldec">tamldec</option> 
+						<option value="telu">telu</option> 
+						<option value="thai">thai</option> 
+						<option value="tirh">tirh</option> 
+						<option value="tibt">tibt</option> 
+						<option value="traditio">traditio</option> 
+						<option value="vaii">vaii</option> 
+						<option value="wara">wara</option> 
+						<option value="wcho">wcho</option> 
+					</select>
+					<span>-u-ca-</span>
+					<select id="ca">
+						<option value=""></option>
+						<option value="buddhist">buddhist</option> 
+						<option value="chinese">chinese</option> 
+						<option value="coptic">coptic</option> 
+						<option value="dangi">dangi</option> 
+						<option value="ethioaa">ethioaa</option> 
+						<option value="ethiopic">ethiopic</option> 
+						<option value="gregory">gregory</option> 
+						<option value="hebrew">hebrew</option> 
+						<option value="indian">indian</option> 
+						<option value="islamic">islamic</option> 
+						<option value="islamic-umalqura">islamic-umalqura</option> 
+						<option value="islamic-tbla">islamic-tbla</option> 
+						<option value="islamic-civil">islamic-civil</option> 
+						<option value="islamic-rgsa">islamic-rgsa</option> 
+						<option value="iso8601">iso8601</option> 
+						<option value="japanese">japanese</option> 
+						<option value="persian">persian</option> 
+						<option value="roc">roc</option> 
+						<option value="islamicc">islamicc</option> 
+					</select>
+				</form>
+			</aside>
+
+			<main>
+				<h2>Output</h2>
+				<span id="output"></span>
+			</main>
+		</div>
+	</body>
+</html>
