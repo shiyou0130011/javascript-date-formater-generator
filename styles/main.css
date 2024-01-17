@@ -1,0 +1,9 @@
+html{
+	font-size: 16px;
+}
+body{
+	color: #323B3C;	
+}
+#outer{
+	display: flex;
+}
