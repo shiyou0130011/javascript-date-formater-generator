@@ -1,6 +1,8 @@
 window.addEventListener("load", function(){
-	document.querySelector("form#js-date-format-form [name=date]").valueAsDate = new Date
-	document.querySelector("form#js-date-format-form [name=time]").valueAsDate = new Date
+	let d = new Date()
+	// document.querySelector("form#js-date-format-form [name=date]").valueAsDate = new Date
+	// document.querySelector("form#js-date-format-form [name=time]").valueAsDate = new Date
+	document.querySelector("#date-value").innerText = d.toISOString()
 
 
 	document.querySelector("form#js-date-format-form").addEventListener("change", function(e){
@@ -17,9 +19,8 @@ window.addEventListener("load", function(){
 			lang += `-u${extra}`
 		}
 		
-		document.querySelector("#output").innerText = new Intl.DateTimeFormat(lang).format(
-			new Date(`${this.querySelector("[name=date]").value}T${this.querySelector("[name=time]").value}:00+`)
-		)
-
+		document.querySelector("#output").innerText = new Intl.DateTimeFormat(lang).format(d)
 	})
+
+	document.querySelector("form#js-date-format-form").dispatchEvent(new CustomEvent("change"))
 })
