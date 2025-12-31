@@ -8,7 +8,8 @@ body{
 	display: flex;
 }
 #output{
-	font-family: 'Noto Serif Ahom',
+	font-family: Noto Sans, 
+		'Noto Serif Ahom',
 		"Noto Serif Balinese",
 		'Noto Sans Cham'
 		'Noto Sans Gunjala Gondi',
