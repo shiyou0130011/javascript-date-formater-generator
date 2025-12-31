@@ -2,7 +2,19 @@ window.addEventListener("load", function(){
 	let d = new Date()
 	// document.querySelector("form#js-date-format-form [name=date]").valueAsDate = new Date
 	// document.querySelector("form#js-date-format-form [name=time]").valueAsDate = new Date
-	document.querySelector("#date-value").innerText = d.toISOString()
+	document.querySelector("#date-value").innerText = new Intl.DateTimeFormat(
+		"sv-SE",
+		{
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit",
+			hour12: false,
+			timeZoneName: "longOffset", 
+		}
+	).format(d)
 
 
 	document.querySelector("form#js-date-format-form").addEventListener("change", function(e){
